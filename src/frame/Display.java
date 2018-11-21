@@ -101,7 +101,7 @@ public class Display extends JDialog implements ActionListener {
     }
 
     private void doThings(){
-        Controller con = new Controller();
+        Controller con = new Controller(shot.getSelectedItem().toString(),email.getText(), password.getText());
         con.setDisplay(this);
         setVisible(false);
     }

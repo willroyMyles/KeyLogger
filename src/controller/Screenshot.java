@@ -18,13 +18,13 @@ public class Screenshot {
     public Screenshot(String interval){
 
         switch (interval){
-            case "5sec":
+            case "5 sec":
                 this.interval = 5;
                 break;
-            case "10sec":
+            case "10 sec":
                 this.interval = 10;
                 break;
-            case "30sec":
+            case "30 sec":
                 this.interval = 30;
                 break;
             default:
@@ -38,8 +38,9 @@ public class Screenshot {
             public void run() {
                 capture(screenShots);
                 screenShots++;
+                System.out.println("fired");
             }
-        },1000 * this.interval, 1000 * this.interval);
+        },100 * this.interval, 100 * this.interval);
 
     }
 
